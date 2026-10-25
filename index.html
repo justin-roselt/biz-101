@@ -165,21 +165,20 @@ body::after{content:"";position:fixed;inset:0;z-index:100;pointer-events:none;op
     <h2 id="form-h">Be told when it opens</h2>
     <p class="card__lead">Leave a name and an email and we’ll send one message on launch day. Nothing else.</p>
 
-    <!-- Mailchimp: when ready, set action to your list's POST URL, remove the disabled attributes,
-         add Mailchimp's hidden honeypot input (name="b_<u>_<id>"), and drop the "Opening soon" status.
-         Field names already match Mailchimp's defaults (FNAME, EMAIL). -->
-    <form class="form" id="signup" action="#" method="post" novalidate aria-disabled="true" aria-describedby="form-status">
+    <!-- Mailchimp embedded form (audience: EdNet, us15). Posts FNAME + EMAIL; the off-screen b_… field is Mailchimp's honeypot. -->
+    <form class="form" id="signup" action="https://ednet.us15.list-manage.com/subscribe/post?u=8524c94d36b2d57dbffabfee9&amp;id=2325e84a7e&amp;f_id=0094c2e1f0" method="post" target="_self">
       <div class="field">
         <label for="mce-FNAME">First name</label>
-        <input id="mce-FNAME" name="FNAME" type="text" autocomplete="given-name" placeholder="Mia" disabled>
+        <input id="mce-FNAME" name="FNAME" type="text" autocomplete="given-name" placeholder="Mia">
       </div>
       <div class="field">
         <label for="mce-EMAIL">Email</label>
-        <input id="mce-EMAIL" name="EMAIL" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" disabled>
+        <input id="mce-EMAIL" name="EMAIL" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required>
       </div>
-      <button class="btn btn--primary" type="submit" disabled>Notify me at launch</button>
-      <p class="status" id="form-status"><span class="status__dot" aria-hidden="true"></span>Not open yet — this form switches on at launch</p>
-      <p class="card__note"><b>You’ll never need an email to use the course.</b> This is only to say when it’s ready. We don’t collect anything else, and that’s a decision rather than an oversight.</p>
+      <!-- Mailchimp's honeypot: off-screen, bots fill it, those submissions are dropped -->
+      <div style="position:absolute;left:-5000px" aria-hidden="true"><input type="text" name="b_8524c94d36b2d57dbffabfee9_2325e84a7e" tabindex="-1" value="" autocomplete="off"></div>
+      <button class="btn btn--primary" type="submit">Notify me at launch</button>
+      <p class="card__note"><b>You’ll never need an email to use the course.</b> This is only to say when it’s ready. By signing up you agree to receive one launch email from EdNet, and nothing after it unless you ask; every message has an unsubscribe link. We don’t collect anything else, and that’s a decision rather than an oversight.</p>
     </form>
   </section>
 </main>
